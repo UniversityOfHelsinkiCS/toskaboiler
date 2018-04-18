@@ -1,0 +1,74 @@
+{
+  "name": "toskaboiler",
+  "version": "1.0.0",
+  "description": "Boilerplate for future toska frontend projects",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --mode production",
+    "dev": "webpack-dev-server --mode development --hot",
+    "lint": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stats": "webpack --mode production --json --optimize-minimize > stats.json"
+  },
+  "author": "Jami Kousa",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-semantic-ui-react-imports": "^1.3.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-template": "^6.2.0",
+    "husky": "^0.14.3",
+    "mini-css-extract-plugin": "^0.4.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-react": "^0.79.1",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react",
+      "stage-2"
+    ],
+    "plugins": [
+      "transform-semantic-ui-react-imports"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true
+    },
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
+      "react/jsx-filename-extension": "off"
+    }
+  }
+}
