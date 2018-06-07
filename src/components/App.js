@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
+import MagicReduxView from './MagicReduxView'
 
 const INITIAL_STATE = {
   greetings: ['Hello'],
@@ -25,6 +26,7 @@ export default class App extends Component {
           <Button color="purple" onClick={this.addNewGreeting(nextGreeting)}>
             {nextGreeting}
           </Button>
+          <MagicReduxView />
         </div >
       )
     }
