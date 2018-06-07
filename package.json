@@ -37,6 +37,8 @@
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.3.1",
@@ -73,7 +75,12 @@
         "never"
       ],
       "react/jsx-filename-extension": "off",
-      "react/prop-types": [1, { "skipUndeclared": true }]
+      "react/prop-types": [
+        1,
+        {
+          "skipUndeclared": true
+        }
+      ]
     }
   }
 }
