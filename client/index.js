@@ -28,8 +28,7 @@ const refresh = () => render(
 )
 
 refresh()
-console.log('Refresh was calloed')
+
 if (module.hot) {
-  console.log('MODULE IS VERY HOT')
   module.hot.accept()
 }
