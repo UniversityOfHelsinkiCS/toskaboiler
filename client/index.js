@@ -18,7 +18,7 @@ if (!isDevEnv) {
 }
 */
 
-render(
+const refresh = () => render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
@@ -27,6 +27,9 @@ render(
   document.getElementById('root'),
 )
 
+refresh()
+console.log('Refresh was calloed')
 if (module.hot) {
+  console.log('MODULE IS VERY HOT')
   module.hot.accept()
 }
