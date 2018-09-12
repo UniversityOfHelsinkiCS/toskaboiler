@@ -5,7 +5,7 @@ import { Button, List } from 'semantic-ui-react'
 import { getPostFromApi, clearPosts } from '../util/redux/postReducer'
 
 const MagicReduxView = ({ getPost, clearList, posts }) => {
-  const handleGet = () => getPost(Math.floor(Math.random() * 33))
+  const handleGet = () => getPost(Math.floor(1 + Math.random() * 33))
   const handleClear = () => clearList()
   return (
     <div style={{ paddingTop: '1em' }}>

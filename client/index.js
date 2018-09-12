@@ -18,7 +18,7 @@ if (!isDevEnv) {
 }
 */
 
-render(
+const refresh = () => render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
@@ -26,6 +26,8 @@ render(
   </Provider>,
   document.getElementById('root'),
 )
+
+refresh()
 
 if (module.hot) {
   module.hot.accept()

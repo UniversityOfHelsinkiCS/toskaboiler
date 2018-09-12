@@ -3,10 +3,14 @@ const htmlTemplate = require('html-webpack-template')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = (env, argv) => {
   const { mode } = argv
-  const additionalPlugins = mode === 'production' ? [new UglifyJsPlugin()] : [] // Make JS smaller
+  const additionalPlugins = mode === 'production' ?
+    [new UglifyJsPlugin()] // Make JS smaller
+    : [new webpack.HotModuleReplacementPlugin()] // Enable hot module replacement
+
   const additionalOptimizations = mode === 'production' ? {
     splitChunks: {
       chunks: 'all',
@@ -16,10 +20,16 @@ module.exports = (env, argv) => {
       new OptimizeCssAssetsPlugin(),
     ],
   } : {}
+
+  const additionalEntries = mode === 'production' ? []
+  : ['webpack-hot-middleware/client?http://localhost:8000']
+
   return {
+    mode: mode,
     entry: [
-      'babel-polyfill', // babel-polyfill so we don't need to import it anywhere
-      './src',
+      'babel-polyfill', // so we don't need to import it anywhere
+      './client',
+      ...additionalEntries
     ],
     module: {
       rules: [
