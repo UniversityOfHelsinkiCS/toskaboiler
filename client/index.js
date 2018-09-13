@@ -8,16 +8,6 @@ import './assets/custom.css'
 import store from './util/store'
 import App from './components/App'
 
-/*
-import { isDevEnv } from './util/common'
-
-if (!isDevEnv) {
-  try {
-    Raven.config('').install() // eslint-disable-line
-  } catch (e) { } // eslint-disable-line
-}
-*/
-
 const refresh = () => render(
   <Provider store={store}>
     <BrowserRouter>
