@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+/**
+ * ApiConnection simplifies redux usage
+ */
+
 const getAxios = () => axios.create({ baseURL: '/api' })
 
 const callApi = async (url, method = 'get', data) => {
@@ -18,7 +22,7 @@ const callApi = async (url, method = 'get', data) => {
   }
 }
 
-export default (route, prefix, data, method = 'get', query) => (
+export default (route, prefix, method = 'get', data, query) => (
   {
     type: `${prefix}_ATTEMPT`,
     requestSettings: {
@@ -31,6 +35,10 @@ export default (route, prefix, data, method = 'get', query) => (
   }
 )
 
+/**
+ * This is a redux middleware used for tracking api calls
+ */
+
 export const handleRequest = store => next => async (action) => {
   next(action)
   const { requestSettings } = action
@@ -39,7 +47,7 @@ export const handleRequest = store => next => async (action) => {
       route, method, data, prefix, query,
     } = requestSettings
     try {
-      const res = await callApi(route, method, data, store.getState().user)
+      const res = await callApi(route, method, data)
       store.dispatch({ type: `${prefix}_SUCCESS`, response: res.data, query })
     } catch (err) {
       store.dispatch({ type: `${prefix}_FAILURE`, response: err, query })

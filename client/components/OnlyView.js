@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 
-import MagicReduxComponent from './MagicReduxComponent'
+import MessageComponent from './MessageComponent'
 
 const INITIAL_STATE = {
   greetings: ['Hello'],
@@ -27,7 +27,7 @@ export default class OnlyView extends Component {
           <Button color="purple" onClick={this.addNewGreeting(nextGreeting)}>
             {nextGreeting}
           </Button>
-          <MagicReduxComponent />
+          <MessageComponent />
         </div >
       )
     }
