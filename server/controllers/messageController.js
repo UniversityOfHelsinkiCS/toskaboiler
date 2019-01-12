@@ -1,14 +1,20 @@
 /**
  * Simple example for backend
  */
-let messages = []
+const messages = []
 let simpleId = 0
 
-export const createMessage = (req, res) => {
-    const newMessage = {
-        id: simpleId++,
-        body: req.body.message
-    }
-    messages.push(newMessage)
-    res.send(newMessage).end()
+const createMessage = (req, res) => {
+  const newMessage = {
+    id: simpleId,
+    body: req.body.message,
+  }
+  messages.push(newMessage)
+  res.send(newMessage).end()
+  simpleId += 1
+}
+
+
+module.exports = {
+  createMessage,
 }

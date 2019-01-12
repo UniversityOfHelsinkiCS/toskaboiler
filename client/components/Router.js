@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import OnlyView from './OnlyView'
+import OnlyView from 'Components/OnlyView'
 
 export default () => (
   <div className="content">

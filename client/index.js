@@ -3,10 +3,10 @@ import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import 'semantic-ui-css/semantic.min.css'
-import './assets/custom.css'
+import 'Assets/custom.css'
 
-import store from './util/store'
-import App from './components/App'
+import store from 'Utilities/store'
+import App from 'Components/App'
 
 const refresh = () => render(
   <Provider store={store}>

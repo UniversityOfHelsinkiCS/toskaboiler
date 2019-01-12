@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const htmlTemplate = require('html-webpack-template')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -7,8 +8,8 @@ const webpack = require('webpack')
 
 module.exports = (env, argv) => {
   const { mode } = argv
-  const additionalPlugins = mode === 'production' ?
-    [new UglifyJsPlugin()] // Make JS smaller
+  const additionalPlugins = mode === 'production'
+    ? [new UglifyJsPlugin()] // Make JS smaller
     : [new webpack.HotModuleReplacementPlugin()] // Enable hot module replacement
 
   const additionalOptimizations = mode === 'production' ? {
@@ -22,15 +23,23 @@ module.exports = (env, argv) => {
   } : {}
 
   const additionalEntries = mode === 'production' ? []
-  : ['webpack-hot-middleware/client?http://localhost:8000']
+    : ['webpack-hot-middleware/client?http://localhost:8000']
 
   return {
-    mode: mode,
+    mode,
     entry: [
-      'babel-polyfill', // so we don't need to import it anywhere
+      '@babel/polyfill', // so we don't need to import it anywhere
       './client',
-      ...additionalEntries
+      ...additionalEntries,
     ],
+    resolve: {
+      alias: {
+        Utilities: path.resolve(__dirname, 'client/util/'),
+        Components: path.resolve(__dirname, 'client/components/'),
+        Assets: path.resolve(__dirname, 'client/assets/'),
+        Root: path.resolve(__dirname),
+      },
+    },
     module: {
       rules: [
         { // Load JS files

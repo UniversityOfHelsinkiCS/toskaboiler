@@ -3,7 +3,7 @@ import callBuilder from '../apiConnection'
  * Actions and reducers are in the same file for readability
  */
 
-export const postMessage = message => {
+export const postMessageAction = (message) => {
   const route = '/messages'
   const prefix = 'CREATE_MESSAGE'
   return callBuilder(route, prefix, 'post', message)

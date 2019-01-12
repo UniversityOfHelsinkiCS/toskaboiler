@@ -1,9 +1,10 @@
-import Router from 'express'
-import { createMessage } from './controllers/messageController'
+const Router = require('express')
+const { createMessage } = require('@controllers/messageController')
+
 const router = Router()
 
 router.get('/', (req, res) => {
-    res.send('root')
+  res.send('root')
 })
 
 router.get('/ping', (req, res) => res.send('pong'))

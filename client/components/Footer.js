@@ -1,5 +1,5 @@
 import React from 'react'
-import { images } from '../util/common'
+import { images } from 'Utilities/common'
 
 export default () => (
   <div className="footer">

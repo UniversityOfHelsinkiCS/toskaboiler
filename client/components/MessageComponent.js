@@ -2,28 +2,34 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Input, Button, List } from 'semantic-ui-react'
 
-import { postMessage } from '../util/redux/messageReducer'
+import { postMessageAction } from 'Utilities/redux/messageReducer'
 
 const INITIAL_STATE = {
-  message: ''
+  message: '',
 }
 
 class MessageComponent extends Component {
   state = INITIAL_STATE
 
-  handlePost = () => this.props.postMessage(this.state.message)
+  handlePost = () => {
+    const { postMessage } = this.props
+    const { message } = this.state
+    postMessage(message)
+  }
+
   handleChange = event => this.setState({ [event.target.id]: event.target.value })
 
   render() {
     const { messages } = this.props
+    const { message } = this.state
     return (
       <div style={{ paddingTop: '1em' }}>
-        <Input id='message' value={this.state.message} onChange={this.handleChange} />
+        <Input id="message" value={message} onChange={this.handleChange} />
         <Button color="purple" onClick={this.handlePost}>
           Send!
         </Button>
         <List>
-          {messages.map(message => <List.Item key={message.id}>{message.body}</List.Item>)}
+          {messages.map(m => <List.Item key={m.id}>{m.body}</List.Item>)}
         </List>
       </div>
     )
@@ -35,7 +41,7 @@ const mapStateToProps = ({ messages }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  postMessage: message => dispatch(postMessage({ message })),
+  postMessage: message => dispatch(postMessageAction({ message })),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageComponent)

@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import { inProduction } from '../../util/common'
-import { handleRequest } from './apiConnection'
 
-import combinedReducers from './redux'
+import { inProduction } from 'Utilities/common'
+import { handleRequest } from 'Utilities/apiConnection'
+import combinedReducers from 'Utilities/redux'
 
 // eslint-disable-next-line
 const composeEnhancers = (!inProduction && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;

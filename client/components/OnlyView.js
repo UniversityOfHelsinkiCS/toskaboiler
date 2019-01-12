@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 
-import MessageComponent from './MessageComponent'
+import MessageComponent from 'Components/MessageComponent'
 
 const INITIAL_STATE = {
   greetings: ['Hello'],
@@ -22,13 +22,13 @@ export default class OnlyView extends Component {
       const nextGreeting = `${greetings[greetings.length - 1]}!`
       return (
         <div>
-          {this.state.greetings.join(' ')}
+          {greetings.join(' ')}
           <br />
           <Button color="purple" onClick={this.addNewGreeting(nextGreeting)}>
             {nextGreeting}
           </Button>
           <MessageComponent />
-        </div >
+        </div>
       )
     }
 }

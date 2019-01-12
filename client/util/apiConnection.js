@@ -4,22 +4,11 @@ import axios from 'axios'
  * ApiConnection simplifies redux usage
  */
 
-const getAxios = () => axios.create({ baseURL: '/api' })
+const getAxios = axios.create({ baseURL: '/api' })
 
 const callApi = async (url, method = 'get', data) => {
   const options = { headers: {} }
-  switch (method) {
-    case 'get':
-      return getAxios().get(url, options)
-    case 'post':
-      return getAxios().post(url, data, options)
-    case 'put':
-      return getAxios().put(url, data, options)
-    case 'delete':
-      return getAxios().delete(url, options)
-    default:
-      return Promise.reject(new Error('Invalid http method'))
-  }
+  return getAxios[method](url, data, options)
 }
 
 export default (route, prefix, method = 'get', data, query) => (
