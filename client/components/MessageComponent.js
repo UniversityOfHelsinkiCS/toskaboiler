@@ -1,39 +1,28 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Input, Button, List } from 'semantic-ui-react'
 
 import { postMessageAction } from 'Utilities/redux/messageReducer'
+import { getMessagesAction } from '../util/redux/messageReducer';
 
-const INITIAL_STATE = {
-  message: '',
-}
+const MessageComponent = ({ messages, postMessage, getMessages }) => {
+  const [message, setMessage] = useState('')
 
-class MessageComponent extends Component {
-  state = INITIAL_STATE
+  useEffect(() => {
+    getMessages()
+  }, [messages.length])
 
-  handlePost = () => {
-    const { postMessage } = this.props
-    const { message } = this.state
-    postMessage(message)
-  }
-
-  handleChange = event => this.setState({ [event.target.id]: event.target.value })
-
-  render() {
-    const { messages } = this.props
-    const { message } = this.state
-    return (
-      <div style={{ paddingTop: '1em' }}>
-        <Input id="message" value={message} onChange={this.handleChange} />
-        <Button color="purple" onClick={this.handlePost}>
-          Send!
-        </Button>
-        <List>
-          {messages.map(m => <List.Item key={m.id}>{m.body}</List.Item>)}
-        </List>
-      </div>
-    )
-  }
+  return (
+    <div style={{ paddingTop: '1em' }}>
+      <Input id="message" value={message} onChange={e => setMessage(e.target.value)} />
+      <Button color="purple" onClick={() => postMessage(message)}>
+        Send!
+      </Button>
+      <List>
+        {messages.map(m => <List.Item key={m.id}>{m.body}</List.Item>)}
+      </List>
+    </div>
+  )
 }
 
 const mapStateToProps = ({ messages }) => ({
@@ -42,6 +31,7 @@ const mapStateToProps = ({ messages }) => ({
 
 const mapDispatchToProps = dispatch => ({
   postMessage: message => dispatch(postMessageAction({ message })),
+  getMessages: () => dispatch(getMessagesAction())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageComponent)

@@ -4,6 +4,10 @@
 const messages = []
 let simpleId = 0
 
+const getMessages = (req, res) => {
+  res.send(messages).end()
+}
+
 const createMessage = (req, res) => {
   const newMessage = {
     id: simpleId,
@@ -16,5 +20,6 @@ const createMessage = (req, res) => {
 
 
 module.exports = {
+  getMessages,
   createMessage,
 }

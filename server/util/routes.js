@@ -1,5 +1,5 @@
 const Router = require('express')
-const { createMessage } = require('@controllers/messageController')
+const { getMessages, createMessage } = require('@controllers/messageController')
 
 const router = Router()
 
@@ -8,6 +8,8 @@ router.get('/', (req, res) => {
 })
 
 router.get('/ping', (req, res) => res.send('pong'))
+
+router.get('/messages', getMessages)
 router.post('/messages', createMessage)
 
 module.exports = router
