@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Input, Button, List } from 'semantic-ui-react'
 
-import { postMessageAction } from 'Utilities/redux/messageReducer'
-import { getMessagesAction } from '../util/redux/messageReducer';
+import { postMessageAction, getMessagesAction } from 'Utilities/redux/messageReducer'
 
 const MessageComponent = ({ messages, postMessage, getMessages }) => {
   const [message, setMessage] = useState('')
@@ -31,7 +30,7 @@ const mapStateToProps = ({ messages }) => ({
 
 const mapDispatchToProps = dispatch => ({
   postMessage: message => dispatch(postMessageAction({ message })),
-  getMessages: () => dispatch(getMessagesAction())
+  getMessages: () => dispatch(getMessagesAction()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageComponent)

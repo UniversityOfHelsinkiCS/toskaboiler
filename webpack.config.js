@@ -68,6 +68,7 @@ module.exports = (env, argv) => {
     plugins: [
       // Skip the part where we would make a html template
       new HtmlWebpackPlugin({
+        title: 'Toska Boilerplate',
         inject: false,
         template: htmlTemplate,
         appMountId: 'root',
