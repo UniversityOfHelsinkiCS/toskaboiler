@@ -3,19 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const htmlTemplate = require('html-webpack-template')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = (env, argv) => {
   const { mode } = argv
   const additionalPlugins = mode === 'production'
-    ? [new UglifyJsPlugin()] // Make JS smaller
+    ? [] // Make JS smaller
     : [new webpack.HotModuleReplacementPlugin()] // Enable hot module replacement
 
   const additionalOptimizations = mode === 'production' ? {
-    splitChunks: {
-      chunks: 'all',
-    },
     minimizer: [
       // Make CSS smaller
       new OptimizeCssAssetsPlugin(),

@@ -5,14 +5,12 @@ RUN echo "Europe/Helsinki" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
 # Setup
-RUN mkdir -p /usr/src/app
-COPY . /usr/src/app
 WORKDIR /usr/src/app
+COPY . .
 
-# Update
-RUN apt-get update
+RUN npm ci
 
-RUN npm i;
+RUN npm run build
 
 EXPOSE 8000
 
