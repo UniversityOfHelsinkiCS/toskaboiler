@@ -1,0 +1,8 @@
+version: "3.5"
+
+services:
+  app:
+    build: https://github.com/UniversityOfHelsinkiCS/toskaboiler.git
+    ports:
+      - 8000:8000
+    container_name: toskaboiler
