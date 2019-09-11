@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const express = require('express')
 const bodyParser = require('body-parser')
 const { PORT, inProduction } = require('@util/common')
@@ -11,6 +10,7 @@ const app = express()
  */
 if (!inProduction) {
   /* eslint-disable */
+  const webpack = require('webpack')
   const middleware = require('webpack-dev-middleware')
   const hotMiddleWare = require('webpack-hot-middleware')
   const webpackConf = require('@root/webpack.config')

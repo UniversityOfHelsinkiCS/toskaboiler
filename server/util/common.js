@@ -1,4 +1,4 @@
-const common = require('@root/util/common')
+const common = require('@root/config/common')
 
 module.exports = {
   ...common,

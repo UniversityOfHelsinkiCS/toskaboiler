@@ -6,12 +6,16 @@ import 'semantic-ui-css/semantic.min.css'
 import 'Assets/custom.css'
 
 import store from 'Utilities/store'
+import { basePath } from 'Utilities/common'
 import App from 'Components/App'
+import ErrorBoundary from 'Components/ErrorBoundary'
 
 const refresh = () => render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
+    <BrowserRouter basename={basePath}>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'),

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "@root/*": ["*"],
+      "@controllers/*": ["server/controllers/*"],
+      "@util/*": ["server/util/*"],
+      "Utilities/*": ["client/util/*"],
+      "Components/*": ["client/components/*"],
+      "Assets/*": ["client/assets/*"],
+      "Root/*": ["*"],
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
