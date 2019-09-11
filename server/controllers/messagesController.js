@@ -1,3 +1,5 @@
+const { ApplicationError } = require('@util/customErrors')
+
 /**
  * Simple example for backend
  */
@@ -20,6 +22,8 @@ const create = async (req, res) => {
 
 const getOne = async (req, res) => {
   const message = messages.find(m => m.id === req.params.id)
+  if (!message) throw new ApplicationError('Not found', 404)
+
   res.send(message)
 }
 
