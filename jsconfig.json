@@ -4,13 +4,13 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./",
     "paths": {
-      "@root/*": ["*"],
       "@controllers/*": ["server/controllers/*"],
+      "@middleware/*": ["server/middleware/*"],
       "@util/*": ["server/util/*"],
       "Utilities/*": ["client/util/*"],
       "Components/*": ["client/components/*"],
       "Assets/*": ["client/assets/*"],
-      "Root/*": ["*"],
+      "@root/*": ["*"],
     }
   },
   "exclude": ["node_modules", "dist"]

@@ -13,4 +13,4 @@ export const colors = {
 
 }
 
-export * from 'Root/config/common'
+export * from '@root/config/common'

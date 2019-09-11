@@ -1,15 +1,14 @@
 const Router = require('express')
-const { getMessages, createMessage } = require('@controllers/messageController')
+const messages = require('@controllers/messagesController')
 
 const router = Router()
 
-router.get('/', (req, res) => {
-  res.send('root')
-})
+router.get('/', (req, res) => res.send('welcome to root'))
 
-router.get('/ping', (req, res) => res.send('pong'))
-
-router.get('/messages', getMessages)
-router.post('/messages', createMessage)
+router.get('/messages', messages.getAll)
+router.post('/messages', messages.create)
+router.get('/messages/:id', messages.getOne)
+router.put('/messages/:id', messages.update)
+router.delete('/messages/:id', messages.destroy)
 
 module.exports = router

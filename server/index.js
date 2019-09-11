@@ -1,8 +1,9 @@
 const express = require('express')
-const bodyParser = require('body-parser')
+require('express-async-errors')
 const { PORT, inProduction } = require('@util/common')
 const routes = require('@util/routes')
 const logger = require('@util/logger')
+const errorMiddleware = require('@middleware/errorMiddleware')
 
 const app = express()
 /**
@@ -22,7 +23,9 @@ if (!inProduction) {
   app.use('/', express.static('dist/'))
 }
 
-app.use(bodyParser.json())
+app.use(express.json())
 app.use('/api', routes)
+
+app.use(errorMiddleware)
 
 app.listen(PORT, () => { logger.info(`Started on port ${PORT}`) })
