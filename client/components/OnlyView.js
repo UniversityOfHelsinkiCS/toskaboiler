@@ -25,18 +25,19 @@ export default () => {
       label: 'Name',
       key: 'name',
       renderCell: ({ name }) => name,
-      sort: (a, b) => a.name.localeCompare(b.name),
+      width: 300,
     },
     {
       label: 'Left',
       key: 'left',
       renderCell: ({ left }) => <span style={{ color: 'red' }}>{left}</span>,
-      sort: (a, b) => a.left - b.left,
+      getCellVal: ({ left }) => left,
     },
     {
       label: 'Do something',
       key: 'button',
       renderCell: ({ name }) => <Button color="purple" onClick={() => console.log(`Clicked ${name}!`)}>CLICK</Button>,
+      disableSort: true,
     },
   ]
 
@@ -50,7 +51,12 @@ export default () => {
         </Button>
       </div>
       <MessageComponent />
-      <VirtualizedTable searchable data={generateData(10000)} columns={columns} />
+      <VirtualizedTable
+        searchable
+        data={generateData(10000)}
+        columns={columns}
+        defaultCellWidth={100}
+      />
     </div>
   )
 }
