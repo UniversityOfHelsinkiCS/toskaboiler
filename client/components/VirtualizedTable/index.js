@@ -4,7 +4,7 @@ import {
 } from 'react-virtualized'
 import { sortBy as lodashSortBy, debounce } from 'lodash'
 import { Input } from 'semantic-ui-react'
-import './virtualizedTable.css'
+import 'Components/VirtualizedTable/virtualizedTable.scss'
 
 const VirtualizedTable = ({
   data, columns, rowHeight = 50, headerHeight = 30, searchable, defaultCellWidth,

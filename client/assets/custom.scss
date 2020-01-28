@@ -1,6 +1,8 @@
+$mainColor: whitesmoke;
+
 .navbar {
   height: 5em;
-  background-color: whitesmoke;
+  background-color: $mainColor;
 }
 
 .content {
@@ -12,5 +14,5 @@
 
 .footer {
   height: 5em;
-  background-color: whitesmoke;
+  background-color: $mainColor;
 }

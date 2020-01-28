@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const htmlTemplate = require('html-webpack-template')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const sass = require('sass')
 const webpack = require('webpack')
 
 module.exports = (env, argv) => {
@@ -56,6 +57,23 @@ module.exports = (env, argv) => {
           // Load CSS files
           test: /\.css$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        },
+        { // Load SCSS & SASS files
+          test: /\.s[ac]ss$/i,
+          use: [
+            // Creates `style` nodes from JS strings
+            'style-loader',
+            // Translates CSS into CommonJS
+            'css-loader',
+            // Compiles Sass to CSS
+            {
+              loader: 'sass-loader',
+              options: {
+                // Prefer `dart-sass`
+                implementation: sass,
+              },
+            },
+          ],
         },
         {
           // Load other files
