@@ -5,8 +5,6 @@ workflows:
   test-build-deploy:
     jobs:
       - dockerhub/publish:
-          requires:
-            - cypress/run
           image: toska/$CIRCLE_PROJECT_REPONAME
           filters:
             branches:
