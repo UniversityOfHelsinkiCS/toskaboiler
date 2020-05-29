@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button } from '@material-ui/core'
 
 import MessageComponent from 'Components/MessageComponent'
 import VirtualizedTable from 'Components/VirtualizedTable'
@@ -36,7 +36,7 @@ export default () => {
     {
       label: 'Do something',
       key: 'button',
-      renderCell: ({ name }) => <Button color="purple" onClick={() => console.log(`Clicked ${name}!`)}>CLICK</Button>,
+      renderCell: ({ name }) => <Button color="secondary" onClick={() => console.log(`Clicked ${name}!`)}>CLICK</Button>,
       disableSort: true,
     },
   ]
@@ -46,7 +46,7 @@ export default () => {
       <div>
         {greetings.join(' ')}
         <br />
-        <Button color="purple" onClick={() => setGreetings([...greetings, nextGreeting])}>
+        <Button color="primary" onClick={() => setGreetings([...greetings, nextGreeting])}>
           {nextGreeting}
         </Button>
       </div>

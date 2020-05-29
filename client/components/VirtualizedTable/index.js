@@ -3,7 +3,7 @@ import {
   AutoSizer, Table, Column, SortDirection, ScrollSync, ColumnSizer,
 } from 'react-virtualized'
 import { sortBy as lodashSortBy, debounce } from 'lodash'
-import { Input } from 'semantic-ui-react'
+import { Input } from '@material-ui/core'
 import 'Components/VirtualizedTable/virtualizedTable.scss'
 
 const VirtualizedTable = ({
@@ -32,16 +32,18 @@ const VirtualizedTable = ({
     return flag
   }), [sortBy, sortDirection, filter, data])
 
-  const handleFilterChange = debounce((_, { value }) => {
-    setFilter(value)
-  }, 300)
+  const handleFilterChange = ({ target }) => {
+    debounce(({ value }) => {
+      setFilter(value)
+    }, 300)(target)
+  }
 
   const manualWidths = useMemo(() => columns.reduce((acc, { width }) => (width ? acc + (width - defaultCellWidth) : acc), 0), [columns])
 
   return (
     <div style={{ maxWidth: '100%', flex: 1, display: 'flex' }}>
       <div style={{ flex: 1 }}>
-        { searchable && <Input onChange={handleFilterChange} placeholder="Search..." icon="search" /> }
+        {searchable && <Input onChange={handleFilterChange} placeholder="Search..." icon="search" />}
         <AutoSizer disableWidth>
           {({ height }) => (
             <ScrollSync>
@@ -70,17 +72,17 @@ const VirtualizedTable = ({
                         columns.map(({
                           label, key, renderCell, disableSort, width,
                         }) => (
-                          <Column
-                            disableSort={disableSort}
-                            width={width || columnWidth}
-                            key={key}
-                            label={label}
-                            dataKey={key}
-                            cellRenderer={({ rowData }) => renderCell(rowData)}
-                            onClick={() => setSortBy(key)}
-                            style={{ overflow: 'auto' }}
-                          />
-                        ))
+                            <Column
+                              disableSort={disableSort}
+                              width={width || columnWidth}
+                              key={key}
+                              label={label}
+                              dataKey={key}
+                              cellRenderer={({ rowData }) => renderCell(rowData)}
+                              onClick={() => setSortBy(key)}
+                              style={{ overflow: 'auto' }}
+                            />
+                          ))
                       }
                     </Table>
                   )}

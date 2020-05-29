@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Input, Button, List } from 'semantic-ui-react'
+import { Input, Button, List, ListItem } from '@material-ui/core'
 
 import { postMessageAction, getMessagesAction } from 'Utilities/redux/messageReducer'
 
@@ -14,11 +14,11 @@ const MessageComponent = ({ messages, postMessage, getMessages }) => {
   return (
     <div style={{ paddingTop: '1em' }}>
       <Input id="message" value={message} onChange={e => setMessage(e.target.value)} />
-      <Button color="purple" onClick={() => postMessage(message)}>
+      <Button color="primary" onClick={() => postMessage(message)}>
         Send!
       </Button>
       <List>
-        {messages.map(m => <List.Item key={m.id}>{m.body}</List.Item>)}
+        {messages.map(m => <ListItem key={m.id}>{m.body}</ListItem>)}
       </List>
     </div>
   )
