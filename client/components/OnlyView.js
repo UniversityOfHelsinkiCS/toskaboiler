@@ -36,7 +36,14 @@ export default () => {
     {
       label: 'Do something',
       key: 'button',
-      renderCell: ({ name }) => <Button color="secondary" onClick={() => console.log(`Clicked ${name}!`)}>CLICK</Button>,
+      renderCell: ({ name }) => (
+        <Button
+          color="secondary"
+          onClick={() => console.log(`Clicked ${name}!`)}
+        >
+          CLICK
+        </Button>
+      ),
       disableSort: true,
     },
   ]
@@ -46,7 +53,11 @@ export default () => {
       <div>
         {greetings.join(' ')}
         <br />
-        <Button variant="contained" color="primary" onClick={() => setGreetings([...greetings, nextGreeting])}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setGreetings([...greetings, nextGreeting])}
+        >
           {nextGreeting}
         </Button>
       </div>

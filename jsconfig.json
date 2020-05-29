@@ -11,7 +11,7 @@
       "Utilities/*": ["client/util/*"],
       "Components/*": ["client/components/*"],
       "Assets/*": ["client/assets/*"],
-      "@root/*": ["*"],
+      "@root/*": ["*"]
     }
   },
   "exclude": ["node_modules", "dist"]

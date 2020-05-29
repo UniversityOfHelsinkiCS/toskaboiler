@@ -8,20 +8,23 @@ const webpack = require('webpack')
 
 module.exports = (env, argv) => {
   const { mode } = argv
-  const additionalPlugins = mode === 'production'
-    ? []
-    : [new webpack.HotModuleReplacementPlugin()] // Enable hot module replacement
+  const additionalPlugins =
+    mode === 'production' ? [] : [new webpack.HotModuleReplacementPlugin()] // Enable hot module replacement
 
-  const additionalOptimizations = mode === 'production'
-    ? {
-      minimizer: [
-        // Make CSS smaller
-        new OptimizeCssAssetsPlugin(),
-      ],
-    }
-    : {}
+  const additionalOptimizations =
+    mode === 'production'
+      ? {
+          minimizer: [
+            // Make CSS smaller
+            new OptimizeCssAssetsPlugin(),
+          ],
+        }
+      : {}
 
-  const additionalEntries = mode === 'production' ? [] : ['webpack-hot-middleware/client?http://localhost:8000']
+  const additionalEntries =
+    mode === 'production'
+      ? []
+      : ['webpack-hot-middleware/client?http://localhost:8000']
 
   const BASE_PATH = process.env.BASE_PATH || '/'
 
@@ -58,7 +61,8 @@ module.exports = (env, argv) => {
           test: /\.css$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
-        { // Load SCSS & SASS files
+        {
+          // Load SCSS & SASS files
           test: /\.s[ac]ss$/i,
           use: [
             // Creates `style` nodes from JS strings

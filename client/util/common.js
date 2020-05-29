@@ -9,8 +9,6 @@ export const images = {
   toska_grayscale: toscalogoGrayscale,
 }
 
-export const colors = {
-
-}
+export const colors = {}
 
 export * from '@root/config/common'

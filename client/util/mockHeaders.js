@@ -16,7 +16,8 @@ export const possibleUsers = [
     givenName: 'fuksiEtunimi',
     mail: 'grp-toska+mockstudent@helsinki.fi',
     schacDateOfBirth: 19770501,
-    schacPersonalUniqueCode: 'urn:schac:personalUniqueCode:int:studentID:helsinki.fi:fuksi',
+    schacPersonalUniqueCode:
+      'urn:schac:personalUniqueCode:int:studentID:helsinki.fi:fuksi',
     sn: 'fuksi',
   },
   {
@@ -31,7 +32,7 @@ export const possibleUsers = [
 ]
 
 export const setHeaders = (uid) => {
-  const user = possibleUsers.find(u => u.uid === uid)
+  const user = possibleUsers.find((u) => u.uid === uid)
   if (!user) return
 
   localStorage.setItem(ITEM_NAME, JSON.stringify(user))

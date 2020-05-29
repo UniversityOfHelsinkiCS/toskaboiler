@@ -60,4 +60,6 @@ if (!inProduction) {
   app.get('*', (req, res) => res.sendFile(INDEX_PATH))
 }
 
-app.listen(PORT, () => { logger.info(`Started on port ${PORT}`) })
+app.listen(PORT, () => {
+  logger.info(`Started on port ${PORT}`)
+})

@@ -21,22 +21,22 @@ const create = async (req, res) => {
 }
 
 const getOne = async (req, res) => {
-  const message = messages.find(m => m.id === req.params.id)
+  const message = messages.find((m) => m.id === req.params.id)
   if (!message) throw new ApplicationError('Not found', 404)
 
   res.send(message)
 }
 
 const update = async (req, res) => {
-  const message = messages.find(m => m.id === req.params.id)
+  const message = messages.find((m) => m.id === req.params.id)
   message.body = req.body.message
-  messages = messages.filter(m => m.id === message.id)
+  messages = messages.filter((m) => m.id === message.id)
   messages.push(message)
   res.send(message)
 }
 
 const destroy = async (req, res) => {
-  messages = messages.filter(m => m.id === req.params.id)
+  messages = messages.filter((m) => m.id === req.params.id)
   res.sendStatus(200)
 }
 

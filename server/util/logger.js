@@ -21,9 +21,11 @@ const logger = winston.createLogger({
 //
 
 if (!inProduction) {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple(),
-  }))
+  logger.add(
+    new winston.transports.Console({
+      format: winston.format.simple(),
+    }),
+  )
 }
 
 module.exports = logger

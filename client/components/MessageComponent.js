@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  Input, Button, List, ListItem,
-} from '@material-ui/core'
+import { Input, Button, List, ListItem } from '@material-ui/core'
 
-import { postMessageAction, getMessagesAction } from 'Utilities/redux/messageReducer'
+import {
+  postMessageAction,
+  getMessagesAction,
+} from 'Utilities/redux/messageReducer'
 
 const MessageComponent = () => {
   const dispatch = useDispatch()
   const [message, setMessage] = useState('')
-  const messages = useSelector(({ messages }) => messages.data.sort((a, b) => a.body.localeCompare(b.body)))
+  const messages = useSelector(({ messages }) =>
+    messages.data.sort((a, b) => a.body.localeCompare(b.body)),
+  )
 
   const postMessage = () => {
     dispatch(postMessageAction({ message }))
@@ -22,12 +25,18 @@ const MessageComponent = () => {
 
   return (
     <div style={{ paddingTop: '1em' }}>
-      <Input id="message" value={message} onChange={(e) => setMessage(e.target.value)} />
+      <Input
+        id="message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
       <Button variant="contained" color="primary" onClick={() => postMessage()}>
         Send!
       </Button>
       <List>
-        {messages.map((m) => <ListItem key={m.id}>{m.body}</ListItem>)}
+        {messages.map((m) => (
+          <ListItem key={m.id}>{m.body}</ListItem>
+        ))}
       </List>
     </div>
   )
