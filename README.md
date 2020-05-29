@@ -31,7 +31,11 @@ To create statistics on how big your project is.
 Please note that npm test doesn't do anything, this is intentional: testing framework is all up to you. I recommend looking into jest, ava and/or superbara.
 
 ### Github actions
-There's a bare bones github actions setup at .github/workflows. It pushes a docker image to `toska/{{ github.event.repository.name }}`. 
+There's a bare bones github actions setup at .github/workflows. It pushes a docker image to   
+`toska/{{ github.event.repository.name }}`.  
+
+Docker username and password have to be stored as [Github secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
+
 
 ## Issues with Toskaboiler
 
