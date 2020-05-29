@@ -46,7 +46,7 @@ export default () => {
       <div>
         {greetings.join(' ')}
         <br />
-        <Button color="primary" onClick={() => setGreetings([...greetings, nextGreeting])}>
+        <Button variant="contained" color="primary" onClick={() => setGreetings([...greetings, nextGreeting])}>
           {nextGreeting}
         </Button>
       </div>
