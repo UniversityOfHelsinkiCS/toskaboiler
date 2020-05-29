@@ -1,11 +1,8 @@
-FROM node:10
+FROM node:14
 
-# Set timezone to Europe/Helsinki
-RUN echo "Europe/Helsinki" > /etc/timezone
-RUN dpkg-reconfigure -f noninteractive tzdata
+WORKDIR /usr/src/app
 
 # Setup
-WORKDIR /usr/src/app
 COPY . .
 
 EXPOSE 8000
