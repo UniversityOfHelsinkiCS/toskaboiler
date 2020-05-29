@@ -62,8 +62,32 @@ module.exports = (env, argv) => {
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
+          // Load SCSS & SASS module files
+          test: /\.module.s[ac]ss$/i,
+          use: [
+            // Creates `style` nodes from JS strings
+            'style-loader',
+            // Translates CSS into CommonJS
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+              },
+            },
+            // Compiles Sass to CSS
+            {
+              loader: 'sass-loader',
+              options: {
+                // Prefer `dart-sass`
+                implementation: sass,
+              },
+            },
+          ],
+        },
+        {
           // Load SCSS & SASS files
           test: /\.s[ac]ss$/i,
+          exclude: /\.module.s[ac]ss$/i,
           use: [
             // Creates `style` nodes from JS strings
             'style-loader',

@@ -3,6 +3,7 @@ import { Button } from '@material-ui/core'
 
 import MessageComponent from 'Components/MessageComponent'
 import VirtualizedTable from 'Components/VirtualizedTable'
+import DesignSystem from 'Components/DesignSystem'
 
 const generateData = (amount) => {
   const res = []
@@ -68,6 +69,7 @@ export default () => {
         columns={columns}
         defaultCellWidth={100}
       />
+      <DesignSystem />
     </div>
   )
 }
