@@ -5,7 +5,7 @@ import { Input, Button, List, ListItem } from '@material-ui/core'
 import {
   postMessageAction,
   getMessagesAction,
-} from 'Utilities/redux/messageReducer'
+} from '../utils/redux/messageReducer'
 
 const MessageComponent = () => {
   const dispatch = useDispatch()
@@ -21,7 +21,7 @@ const MessageComponent = () => {
 
   useEffect(() => {
     dispatch(getMessagesAction())
-  }, [messages.length])
+  }, [messages.length, dispatch])
 
   return (
     <div style={{ paddingTop: '1em' }}>

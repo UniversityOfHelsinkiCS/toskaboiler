@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Button } from '@material-ui/core'
 
-import MessageComponent from 'Components/MessageComponent'
-import VirtualizedTable from 'Components/VirtualizedTable'
-import DesignSystem from 'Components/DesignSystem'
+import MessageComponent from './MessageComponent'
+import VirtualizedTable from './VirtualizedTable'
+import DesignSystem from './DesignSystem'
 
 const generateData = (amount) => {
   const res = []

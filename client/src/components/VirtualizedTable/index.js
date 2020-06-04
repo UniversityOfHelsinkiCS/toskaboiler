@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+
 import {
   AutoSizer,
   Table,
@@ -7,9 +8,12 @@ import {
   ScrollSync,
   ColumnSizer,
 } from 'react-virtualized'
+
 import { sortBy as lodashSortBy, debounce } from 'lodash'
 import { Input } from '@material-ui/core'
-import 'Components/VirtualizedTable/virtualizedTable.scss'
+
+import 'react-virtualized/styles.css'
+import './VirtualizedTable.scss'
 
 const VirtualizedTable = ({
   data,
@@ -36,7 +40,7 @@ const VirtualizedTable = ({
     )
     if (sortDirection === SortDirection.ASC) result.reverse()
     return result
-  }, [sortBy, sortDirection, data])
+  }, [sortBy, sortDirection, data, columns])
 
   const filteredData = useMemo(
     () =>
@@ -57,7 +61,7 @@ const VirtualizedTable = ({
         })
         return flag
       }),
-    [sortBy, sortDirection, filter, data],
+    [filter, sortedData],
   )
 
   const handleFilterChange = ({ target }) => {
@@ -72,7 +76,7 @@ const VirtualizedTable = ({
         (acc, { width }) => (width ? acc + (width - defaultCellWidth) : acc),
         0,
       ),
-    [columns],
+    [columns, defaultCellWidth],
   )
 
   return (

@@ -22,6 +22,6 @@ export default class ErrorBoundary extends Component {
     if (!hasError) {
       return children
     }
-    return <p> An error occurred! </p>
+    return <p>An error occurred!</p>
   }
 }

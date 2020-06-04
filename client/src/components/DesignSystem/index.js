@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@material-ui/core'
-import styles from 'Assets/custom.module.scss'
+
+import styles from './DesignSystem.module.scss'
 
 const DesignSystem = () => {
   return (

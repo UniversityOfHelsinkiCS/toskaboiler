@@ -25,9 +25,6 @@ To start the project in development mode use this command. It will start the ser
 `npm run lint`
 To clean all the little style flaws around your code.
 
-`npm run stats`
-To create statistics on how big your project is.
-
 Please note that npm test doesn't do anything, this is intentional: testing framework is all up to you. I recommend looking into jest, ava and/or superbara.
 
 ### Github actions

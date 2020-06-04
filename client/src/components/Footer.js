@@ -1,10 +1,11 @@
 import React from 'react'
-import { images } from 'Utilities/common'
+
+import toskaColor from '../assets/toscalogo_color.svg'
 
 export default () => (
   <div className="footer">
     <img
-      src={images.toska_color}
+      src={toskaColor}
       style={{ height: '100%', float: 'right' }}
       alt="tosca"
     />

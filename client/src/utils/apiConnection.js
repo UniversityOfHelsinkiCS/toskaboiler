@@ -1,15 +1,15 @@
 import axios from 'axios'
-import { getHeaders } from 'Utilities/mockHeaders'
-import { basePath, inProduction } from 'Utilities/common'
+import { getHeaders } from './mockHeaders'
+import config from '../config'
 
 /**
  * ApiConnection simplifies redux usage
  */
 
-const getAxios = axios.create({ baseURL: `${basePath}api` })
+const getAxios = axios.create({ baseURL: `${config.basePath}api` })
 
 const callApi = async (url, method = 'get', data) => {
-  const defaultHeaders = !inProduction ? getHeaders() : {}
+  const defaultHeaders = !config.inProduction ? getHeaders() : {}
   const headers = { ...defaultHeaders }
   return getAxios({
     method,
