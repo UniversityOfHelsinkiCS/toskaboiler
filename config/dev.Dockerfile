@@ -3,7 +3,8 @@ FROM node:14
 WORKDIR /usr/src/app
 
 # Setup
-COPY . .
+COPY package* ./
+RUN npm ci
 
 EXPOSE 8000
 

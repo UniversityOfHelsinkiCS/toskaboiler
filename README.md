@@ -12,23 +12,24 @@ ApiConnection is a custom redux middleware that is used in most toska software. 
 
 You can see redux example using apiConnection in client/components/MessageComponent. 
 
+### node_modules
+
+The node_modules folder is inside the container. Some dependencies are installed based on the machine running "npm install" so a mismatch may happen if you do so.
+
 ## How users can get started with Toskaboiler
 
-Clone the repo, install node and run `npm install` to get started!
+Clone the repo, install docker to get started!
 
-`npm start`
-To start the project in production mode use this command. It builds the client and then the server.
+`npm run start`
+To start the project in development mode use this command. It will start everything in development mode.
 
-`npm run dev`
-To start the project in development mode use this command. It will start the server in hotloading mode.
+`npm run (un)install <package-name>`
+To (un)install package, this will run the command in docker container.
 
-`npm run lint`
-To clean all the little style flaws around your code.
+`npm run reset`
+To reset everything. This will remove volumes and rebuild the docker images.
 
-`npm run stats`
-To create statistics on how big your project is.
-
-Please note that npm test doesn't do anything, this is intentional: testing framework is all up to you. I recommend looking into jest, ava and/or superbara.
+Please note that npm test doesn't do anything, this is intentional: testing framework is all up to you.
 
 ### Github actions
 There's a bare bones github actions setup at .github/workflows. It pushes a docker image to   

@@ -8,6 +8,7 @@ services:
     image: toskaboiler_dev
     volumes:
       - ./:/usr/src/app
+      - nodemod:/usr/src/app/node_modules/
     ports:
       - 8000:8000
     container_name: toskaboiler_dev
@@ -21,4 +22,5 @@ services:
       - pg_data:/data
 
 volumes:
+  nodemod:
   pg_data:
