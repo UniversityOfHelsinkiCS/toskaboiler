@@ -12,6 +12,12 @@ class ApplicationError extends Error {
 
     this.extra = extra || {}
   }
+
+  toJSON() {
+    return {
+      error: this.message,
+    }
+  }
 }
 
 module.exports = {

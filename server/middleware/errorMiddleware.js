@@ -1,11 +1,16 @@
+const { ApplicationError } = require('@util/customErrors')
+const logger = require('@util/logger')
+
 const errorHandler = (error, req, res, next) => {
-  console.error(error.message, error.name, error.extra)
+  logger.error(`${error.message} ${error.name} ${error.extra}`)
 
-  if (error.name === 'ApplicationError') {
-    return res.status(error.status).send({ error: error.message })
-  }
+  const normalizedError =
+    error instanceof ApplicationError
+      ? error
+      : new ApplicationError(error.message)
 
-  res.status(500).send({ error: error.message })
+  res.status(normalizedError.status).json(normalizedError)
+
   return next(error)
 }
 

@@ -1,4 +1,6 @@
-const shibbolethHeaders = [
+const headersMiddleware = require('unfuck-utf8-headers-middleware')
+
+const headers = [
   'uid',
   'givenname', // First name
   'mail', // Email
@@ -6,14 +8,4 @@ const shibbolethHeaders = [
   'sn', // Last name
 ]
 
-const shibbolethCharsetMiddleware = (req, res, next) => {
-  shibbolethHeaders.forEach((header) => {
-    if (!req.headers[header]) return
-    req.headers[header] = Buffer.from(req.headers[header], 'latin1').toString(
-      'utf8',
-    )
-  })
-  next()
-}
-
-module.exports = shibbolethCharsetMiddleware
+module.exports = headersMiddleware(headers)
