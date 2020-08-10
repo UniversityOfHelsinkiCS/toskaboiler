@@ -9,17 +9,9 @@ const webpack = require('webpack')
 module.exports = (env, argv) => {
   const { mode } = argv
   const additionalPlugins =
-    mode === 'production' ? [] : [new webpack.HotModuleReplacementPlugin()] // Enable hot module replacement
-
-  const additionalOptimizations =
     mode === 'production'
-      ? {
-          minimizer: [
-            // Make CSS smaller
-            new OptimizeCssAssetsPlugin(),
-          ],
-        }
-      : {}
+      ? [new OptimizeCssAssetsPlugin()]
+      : [new webpack.HotModuleReplacementPlugin()] // Enable hot module replacement
 
   const additionalEntries =
     mode === 'production'
@@ -109,9 +101,6 @@ module.exports = (env, argv) => {
           use: ['file-loader'],
         },
       ],
-    },
-    optimization: {
-      ...additionalOptimizations,
     },
     plugins: [
       new webpack.DefinePlugin({
