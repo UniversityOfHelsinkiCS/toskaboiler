@@ -5,7 +5,7 @@ ENV BASE_PATH=$BASE_PATH
 
 # Setup
 COPY package* ./
-RUN npm ci
+RUN npm ci --only=production
 COPY . .
 
 RUN npm run build
