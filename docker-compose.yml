@@ -10,7 +10,7 @@ services:
       - ./:/usr/src/app
       - nodemod:/usr/src/app/node_modules/
     ports:
-      - 8000:8000
+      - 3000:3000
     container_name: toskaboiler_dev
   db:
     image: postgres:11

@@ -6,6 +6,6 @@ WORKDIR /usr/src/app
 COPY package* ./
 RUN npm ci
 
-EXPOSE 8000
+EXPOSE 3000
 
 CMD ["npm", "run", "start:dev"]

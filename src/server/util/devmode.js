@@ -1,4 +1,4 @@
-const chokidar = require('chokidar') // eslint-disable-line
+const chokidar = require('chokidar')
 
 const watcher = chokidar.watch('src', {
   ignored: (path) => path.includes('client'),
