@@ -9,9 +9,10 @@
     "uninstall": "docker-compose run app npm uninstall",
     "reset": "docker-compose down -v && docker-compose up --build",
     "i": "npm run install",
-    "build": "webpack --mode=production",
-    "start:prod": "NODE_ENV=production node index.js",
-    "start:dev": "NODE_ENV=development nodemon index.js",
+    "build": "react-scripts build",
+    "start:front": "react-scripts start",
+    "start:prod": "NODE_ENV=production node ./src/server/index.js",
+    "start:dev": "NODE_ENV=development concurrently \"nodemon ./src/server/index.js\" \"react-scripts start\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -20,46 +21,30 @@
   "author": "Jami Kousa",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.10.1",
-    "@babel/polyfill": "^7.10.1",
-    "@babel/preset-env": "^7.10.1",
-    "@babel/preset-react": "^7.10.1",
-    "@babel/register": "^7.10.1",
     "@material-ui/core": "^4.10.0",
     "axios": "^0.19.2",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^3.5.3",
+    "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
-    "file-loader": "^6.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "html-webpack-template": "^6.2.0",
     "lodash": "^4.17.19",
-    "mini-css-extract-plugin": "^0.9.0",
-    "module-alias": "^2.2.2",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
     "react-virtualized": "^9.21.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.26.7",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.2.1",
     "unfuck-spa-shibboleth-session": "^3.0.8",
     "unfuck-utf8-headers-middleware": "^1.0.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
     "winston": "^3.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "chokidar": "^3.4.0",
-    "eslint": "^7.1.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",
@@ -71,9 +56,22 @@
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0"
   },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "nodemonConfig": {
     "ignore": [
       "dist/*",
+      "toskaboiler/*",
       "client/*",
       "server/*"
     ]
@@ -83,5 +81,6 @@
     "@controllers": "server/controllers",
     "@middleware": "server/middleware",
     "@util": "server/util"
-  }
+  },
+  "proxy": "http://localhost:8000"
 }
