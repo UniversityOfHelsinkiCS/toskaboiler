@@ -5,18 +5,23 @@ import { Input, Button, List, ListItem } from '@material-ui/core'
 import {
   postMessageAction,
   getMessagesAction,
+  deleteMessageAction,
 } from '../util/redux/messageReducer'
 
 const MessageComponent = () => {
   const dispatch = useDispatch()
   const [message, setMessage] = useState('')
-  const messages = useSelector(({ messages }) =>
-    messages.data.sort((a, b) => a.body.localeCompare(b.body)),
+  const messages = useSelector(({ api }) =>
+      api?.messages?.data?.sort((a, b) => a.body.localeCompare(b.body)) ?? [],
   )
 
   const postMessage = () => {
-    dispatch(postMessageAction({ message }))
+    const response = dispatch(postMessageAction({ message }))
     setMessage('')
+  }
+
+  const deleteMessage = (id) => {
+    const res = dispatch(deleteMessageAction(id))
   }
 
   useEffect(() => {
@@ -35,7 +40,9 @@ const MessageComponent = () => {
       </Button>
       <List>
         {messages.map((m) => (
-          <ListItem key={m.id}>{m.body}</ListItem>
+          <ListItem onClick={() => deleteMessage(m.id)} key={m.id}>
+            {m.body}
+          </ListItem>
         ))}
       </List>
     </div>

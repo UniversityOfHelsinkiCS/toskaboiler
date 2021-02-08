@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
 
-import messages from './messageReducer'
+import { apiReducer as api, errorReducer as errors } from '@grp-toska/apina'
 
 export default combineReducers({
-  messages,
+  api,
+  errors,
 })
