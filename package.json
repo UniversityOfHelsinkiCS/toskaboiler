@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "docker-compose up",
-    "install": "docker-compose run app npm install",
-    "uninstall": "docker-compose run app npm uninstall",
     "reset": "docker-compose down -v && docker-compose up --build",
-    "i": "npm run install",
     "build": "react-scripts build",
     "start:front": "react-scripts start",
     "start:prod": "NODE_ENV=production node ./src/server/index.js",
@@ -45,7 +42,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "chokidar": "^3.4.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",

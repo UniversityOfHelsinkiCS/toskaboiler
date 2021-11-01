@@ -20,8 +20,6 @@ if (inProduction) {
 
   app.use(express.static(DIST_PATH))
   app.get('*', (req, res) => res.sendFile(INDEX_PATH))
-} else {
-  require('./util/devmode') // eslint-disable-line
 }
 
 app.use(errorMiddleware)
