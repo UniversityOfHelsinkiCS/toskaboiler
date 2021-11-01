@@ -22,7 +22,7 @@ jobs:
         with:
           push: true
           tags: toska/${{ github.event.repository.name }}:latest
-          build_args: |
+          build-args: |
             BASE_PATH=/toskaboiler
             GIT_SHA=${{ github.sha }}
 
@@ -31,6 +31,6 @@ jobs:
         with:
           push: true
           tags: toska/${{ github.event.repository.name }}:shibboboiler
-          build_args: |
+          build-args: |
             BASE_PATH=/shibboboiler
             GIT_SHA=${{ github.sha }}
