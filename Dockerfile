@@ -3,6 +3,9 @@ FROM node:14
 ARG BASE_PATH
 ENV PUBLIC_URL=$BASE_PATH
 
+ARG GIT_SHA
+ENV REACT_APP_GIT_SHA=$GIT_SHA
+
 # Setup
 COPY package* ./
 RUN npm ci --only=production
