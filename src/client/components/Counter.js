@@ -32,7 +32,7 @@ const Home = () => {
       <Card>
         <CardContent>
           <Box mb={2}>
-            This is a counter. Feel free on increment or decrement it!
+            This is a counter. Feel free to increment or decrement it!
           </Box>
 
           <TextField
