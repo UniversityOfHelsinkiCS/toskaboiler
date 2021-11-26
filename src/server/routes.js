@@ -1,9 +1,9 @@
 const Router = require('express')
-const messages = require('../controllers/messagesController')
+const messages = require('./controllers/messagesController')
 
 const router = Router()
 
-router.get('/', (req, res) => res.send('welcome to root'))
+router.get('/', (req, res) => res.send('Welcome to root!'))
 
 router.get('/messages', messages.getAll)
 router.post('/messages', messages.create)

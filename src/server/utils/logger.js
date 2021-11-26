@@ -1,5 +1,5 @@
 const winston = require('winston')
-const { inProduction } = require('./common')
+const { IN_PRODUCTION } = require('../config')
 
 const logger = winston.createLogger({
   level: 'info',
@@ -20,7 +20,7 @@ const logger = winston.createLogger({
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
 
-if (!inProduction) {
+if (!IN_PRODUCTION) {
   logger.add(
     new winston.transports.Console({
       format: winston.format.simple(),

@@ -1,19 +1,12 @@
-import React, { useEffect } from 'react'
-import { initShibbolethPinger } from 'unfuck-spa-shibboleth-session'
-import NavBar from './NavBar'
-import Footer from './Footer'
-import Router from './Router'
+import React, { Suspense } from 'react'
 
-export default () => {
-  useEffect(() => {
-    initShibbolethPinger() // Remove this if not used behind shibboleth
-  }, [])
+import Routes from './Routes'
+import PageProgress from './PageProgress'
 
-  return (
-    <div>
-      <NavBar />
-      <Router />
-      <Footer />
-    </div>
-  )
-}
+const App = () => (
+  <Suspense fallback={<PageProgress />}>
+    <Routes />
+  </Suspense>
+)
+
+export default App

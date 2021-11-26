@@ -13,7 +13,7 @@ services:
       - 3000:3000
     container_name: toskaboiler_dev
   db:
-    image: postgres:11
+    image: postgres:13.2
     container_name: toskaboiler_db
     environment:
       - PGDATA=/data

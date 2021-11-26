@@ -19,9 +19,11 @@ export default class ErrorBoundary extends Component {
   render() {
     const { hasError } = this.state
     const { children } = this.props
+
     if (!hasError) {
       return children
     }
-    return <p> An error occurred! </p>
+
+    return <p>An error occurred!</p>
   }
 }
